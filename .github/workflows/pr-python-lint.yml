@@ -2,7 +2,7 @@ name: Pr-python lin & format
 
 on:
     pull_request:
-        branches: ["main"]
+        branches: ["feature/day2-ci"]
 
 jobs:
     lint:
