@@ -2,7 +2,7 @@ name: Pr-python lin & format
 
 on:
     pull_request:
-        branches: ["main"]
+        branches: ["feature/day2-ci"]
 
 jobs:
     lint:
@@ -25,7 +25,7 @@ jobs:
                 pip install -r requirements.txt
             
             - name: Check formatting
-              run: black --check src/app.py
+              run: black --check .
             
             - name: Link (ruff)
-              run: ruff check src/app.py
+              run: ruff check
