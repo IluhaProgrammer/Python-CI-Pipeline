@@ -1,0 +1,31 @@
+name: Pr-python lin & format
+
+on:
+    pull_request:
+        branches: ["main"]
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+    
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Python 
+              uses: actions/setup-python@v5
+              with:
+                python-version: "3.12"
+                cache: "pip"
+                cache-dependency-path: "requirements.txt"
+            
+            - name: Install Dependencies
+              run: |
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
+            
+            - name: Check formatting
+              run: black --check src/app.py
+            
+            - name: Link (ruff)
+              run: ruff check src/app.py
